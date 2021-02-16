@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "842270381002",
+    "project_id": "donote-9e4d3",
+    "storage_bucket": "donote-9e4d3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842270381002:android:0aac9f06249c4f45443533",
+        "android_client_info": {
+          "package_name": "com.example.donote"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "842270381002-dp8go611kcemboo9t1o38tbqqds1u83k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.donote",
+            "certificate_hash": "d5255f4756607386da71b4754902fdd3f058f562"
+          }
+        },
+        {
+          "client_id": "842270381002-dr2n5vjifagdf1bj1d8pm1ukfjav4mh0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPXBJoPCA66v6dLs-igG8xHlztDiAzogo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "842270381002-dr2n5vjifagdf1bj1d8pm1ukfjav4mh0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
