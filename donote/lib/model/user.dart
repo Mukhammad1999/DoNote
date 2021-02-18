@@ -1,4 +1,7 @@
 class UserData {
   final String uid;
-  UserData({this.uid});
+  final String photo;
+  final String name;
+
+  UserData({this.uid, this.photo, this.name});
 }

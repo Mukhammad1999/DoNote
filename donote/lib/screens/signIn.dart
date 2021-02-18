@@ -82,53 +82,95 @@ class _SignInState extends State<SignIn> {
                   child: ListView(
                     children: [
                       Form(
-                          key: _formKey,
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical:
+                        key: _formKey,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical:
+                                  MediaQuery.of(context).size.height * 0.05,
+                              horizontal:
+                                  MediaQuery.of(context).size.width * 0.1),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              TextFormField(
+                                decoration: InputDecoration(
+                                  hintText: 'Email',
+                                ),
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    return 'Email cannot be empty';
+                                  }
+                                  return null;
+                                },
+                                onChanged: (value) => eyemail = value.trim(),
+                              ),
+                              SizedBox(
+                                height:
                                     MediaQuery.of(context).size.height * 0.05,
-                                horizontal:
-                                    MediaQuery.of(context).size.width * 0.1),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                TextFormField(
-                                  decoration: InputDecoration(
-                                    hintText: 'Email',
-                                  ),
-                                  validator: (value) {
-                                    if (value.isEmpty) {
-                                      return 'Email cannot be empty';
-                                    }
-                                    return null;
-                                  },
-                                  onChanged: (value) => eyemail = value.trim(),
+                              ),
+                              TextFormField(
+                                decoration: InputDecoration(
+                                  hintText: 'Password',
                                 ),
-                                TextFormField(
-                                  decoration: InputDecoration(
-                                    hintText: 'Password',
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    return 'Password cannot be empty';
+                                  }
+                                  return null;
+                                },
+                                onChanged: (value) => password = value.trim(),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text(
+                                    'Sign In',
+                                    style: GoogleFonts.roboto(
+                                      color: Colors.black,
+                                      fontSize: 26,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                   ),
-                                  validator: (value) {
-                                    if (value.isEmpty) {
-                                      return 'Password cannot be empty';
-                                    }
-                                    return null;
-                                  },
-                                  onChanged: (value) => password = value.trim(),
-                                ),
-                                Row(
-                                  children: [
-                                    SignInButton(
-                                      Buttons.Google,
-                                      onPressed: () async {
-                                        _auth.signInWithGoogle();
-                                      },
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          ))
+                                  FlatButton(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(100),
+                                    ),
+                                    color: Theme.of(context).primaryColor,
+                                    onPressed: () {},
+                                    child: Icon(
+                                      Icons.arrow_forward,
+                                      color: Colors.white,
+                                    ),
+                                  )
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SignInButton(
+                                    Buttons.Google,
+                                    onPressed: () async {
+                                      _auth.signInWithGoogle();
+                                    },
+                                  )
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  FlatButton(
+                                    onPressed: () {
+                                      widget.toggleView();
+                                    },
+                                    child: Text('Sign Up'),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),

@@ -1,4 +1,4 @@
-import 'package:donote/model/user.dart';
+import 'package:donote/sevices/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -15,6 +15,11 @@ class UserRepository {
       idToken: googleAuth.idToken,
     );
     await _firebaseauth.signInWithCredential(credential);
+    var user = await _firebaseauth.currentUser;
+    await Database(uid: user.uid).saveUser(
+      user.displayName,
+      user.photoURL,
+    );
     return _firebaseauth.currentUser;
   }
 
@@ -29,10 +34,14 @@ class UserRepository {
     }
   }
 
-  Future<void> signUp(String email, String password) async {
+  Future signUp(String email, String password, String name) async {
     try {
-      return await _firebaseauth.createUserWithEmailAndPassword(
-          email: email, password: password);
+      await _firebaseauth
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .then((value) => print(value.toString()));
+      var user = _firebaseauth.currentUser;
+      await Database(uid: user.uid).saveUser(name, 'none');
+      return user;
     } catch (e) {
       e.toString();
     }
